@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center">Posts</h1>
+    <h1 class="text-center my-5">Posts</h1>
     <table class="table">
         <thead>
           <tr>
@@ -32,5 +32,8 @@
          
         </tbody>
       </table>
+      <footer class="d-flex justify-content-end">
+        {{$posts->links()}}
+      </footer>
 </div>
 @endsection
