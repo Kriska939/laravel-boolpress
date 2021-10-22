@@ -65,7 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,7 +81,6 @@
             @endif
 
            <div id="root">
-               <h1>Sito in allestimento (Vue)</h1>
            </div>
         </div>
         <script src="{{asset('js/front.js')}}"></script>
