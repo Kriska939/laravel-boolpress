@@ -16,6 +16,7 @@
         <thead>
           <tr>
             <th scope="col">Titolo</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Data di pubblicazione</th>
             <th scope="col"></th>
           </tr>
@@ -26,6 +27,12 @@
                 
             <tr>
                 <td>{{$post->title}}</td>
+                <td>@if($post->category)
+                  <span class="badge badge-pill badge-dark px-3">
+                  {{$post->category->name}}</span>
+                @else - 
+                @endif
+                </td>
                 <td>{{$post->created_at}}</td>
                 <td class="d-flex justify-content-end">
                     <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Apri</a>
