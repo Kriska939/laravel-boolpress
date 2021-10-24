@@ -22,6 +22,14 @@
                 <label for="exampleFormControlInput1">Immagine</label>
                 <input type="text" class="form-control" id="image" name="image" value="{{$post->image}}">
               </div>
+              <div class="form-group">
+                <label for="category_id">Seleziona Categoria</label>
+                <select class="form-control" id="category:id" name="category_id">
+                  @foreach($categories as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                  @endforeach
+                </select>
+              </div>
 
               <button type="submit" class="btn btn-success">Pubblica</button>
           </form>

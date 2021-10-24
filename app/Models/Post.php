@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'content', 'image', 'slug'];
+    protected $fillable = ['title', 'content', 'image', 'slug', 'category_id'];
 
     // definisco la relazione dei post con la categoria: (in questo caso, il post può riferirsi SOLO a una categoria)
 
