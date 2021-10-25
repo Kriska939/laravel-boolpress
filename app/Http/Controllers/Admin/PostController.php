@@ -79,8 +79,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $tags = Tag::all();
+        $tagIds = $post->tags->pluck('id')->toArray();
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'tagIds'));
     }
 
     /**
@@ -96,7 +98,12 @@ class PostController extends Controller
         $data = $request->all();
         $post->fill($data);
         $post->slug =Str::slug($post->title, '-');
-        $post->save();
+
+        if(!array_key_exists('tags', $data)) $post->tags()->detach();
+        else $post->tags()->attach($data['tags']);
+
+
+        $post->update($data);
 
         return redirect()->route('admin.posts.show', compact('post'));
     }
