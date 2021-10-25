@@ -17,6 +17,7 @@
           <tr>
             <th scope="col">Titolo</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Tags</th>
             <th scope="col">Data di pubblicazione</th>
             <th scope="col"></th>
           </tr>
@@ -32,6 +33,14 @@
                   {{$post->category->name}}</span>
                 @else - 
                 @endif
+                </td>
+                <td>
+                  @forelse($post->tags as $tag)
+                  <span class="badge badge-pill badge-info px-3">
+                    {{$tag->name}}</span>
+                  @empty -
+                    
+                  @endforelse
                 </td>
                 <td>{{$post->created_at}}</td>
                 <td class="d-flex justify-content-end">
