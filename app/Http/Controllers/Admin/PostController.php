@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -33,7 +34,8 @@ class PostController extends Controller
 
         $post = new Post();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -50,6 +52,10 @@ class PostController extends Controller
         $post->fill($data);
         $post->slug =Str::slug($post->title, '-');
         $post->save();
+
+        // ho dei tags? Se sì... creo la relazione:
+
+        if(array_key_exists('tags', $data)) $post->tags()->attach($data['tags']); // tutto su un rigo perché non ho else
 
         return redirect()->route('admin.posts.show', compact('post'));
     }
