@@ -31,7 +31,19 @@
                 </select>
               </div>
 
-              <button type="submit" class="btn btn-success">Pubblica</button>
+              <h3>Tags</h3>
+              @foreach($tags as $tag)
+                
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id}}" value="{{ $tag->id}}" name="tags[]" @if (in_array($tag->id, old('tags', $tagIds ? $tagIds : []))) checked @endif>
+                <label class="form-check-label" for="tag-{{ $tag->id}}">{{ $tag->name}}</label>
+              </div>
+
+              @endforeach
+            
+
+              <!-- BOTTONE FINALE DEL FORM-->
+              <div><button type="submit" class="btn btn-success my-3">Pubblica</button></div>
           </form>
     </section>
 </div>

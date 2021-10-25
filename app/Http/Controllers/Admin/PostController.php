@@ -100,7 +100,7 @@ class PostController extends Controller
         $post->slug =Str::slug($post->title, '-');
 
         if(!array_key_exists('tags', $data)) $post->tags()->detach();
-        else $post->tags()->attach($data['tags']);
+        else $post->tags()->sync($data['tags']);
 
 
         $post->update($data);
