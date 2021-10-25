@@ -14,5 +14,12 @@ class Post extends Model
 
         return $this->belongsTo('App\Models\Category');
     }
+
+    // Relazione 1 post che può avere multipli tag
+
+    public function tags(){
+        return $this->belongsToMany('App\Models\Tag');
+    }
+
 }
 
